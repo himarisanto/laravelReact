@@ -1,66 +1,61 @@
-    import { useEffect, useState } from "react";
-    import { useSelector, useDispatch } from "react-redux";
-    import { fetchSiswa } from "../store/siswaSlice";
-    import { User } from "lucide-react";
-    import TambahSiswa from "./tambahSiswa";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSiswa } from "../store/siswaSlice";
+import { User } from "lucide-react";
+import TambahSiswa from "./tambahSiswa";
 
-    export default function SiswaIndex() {
-    const siswa = useSelector((state) => state.siswa.data);
-    const dispatch = useDispatch();
-    const [isOpen, setIsOpen] = useState(false);
+export default function SiswaIndex() {
+const siswa = useSelector((state) => state.siswa.data);
+const dispatch = useDispatch();
+const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
-        dispatch(fetchSiswa());
-    }, [dispatch]);
+useEffect(() => {
+    dispatch(fetchSiswa());
+}, [dispatch]);
 
-    return (
-        <div className="p-6 bg-gray-50 min-h-screen">
+return (
+    <div className="p-6 bg-gray-50 min-h-screen">
         <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-start mb-3">
-            <div>
-                <h1 className="text-3xl font-extrabold text-gray-800 text-center">
-                Daftar Siswa
-                </h1>
-                <p className="text-gray-500 text-center">Kelola data siswa sekolah</p>
+            <div className="flex justify-center items-start mb-3">
+                <div>
+                    <h1 className="text-3xl font-extrabold text-gray-800 text-center">
+                    Daftar Siswa
+                    </h1>
+                    <p className="text-gray-500 text-center">Kelola data siswa sekolah</p>
+                </div>
             </div>
-            <span className="bg-blue-100 text-blue-700 px-4 py-1 rounded-full shadow font-medium mt-9">
-                Total: {siswa.length} siswa
-            </span>
-            </div>
-
-            <div className="flex justify-center m-5">
-            <button
-                onClick={() => setIsOpen(true)}
-                className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 
-                        focus:outline-none focus:ring-blue-300 font-medium rounded-lg 
-                        text-sm px-5 py-2.5 text-center"
-                type="button"
-            >
-                + Tambah Siswa
-            </button>
+            <div className="flex justify-between items-center mb-4">
+                <button
+                    onClick={() => setIsOpen(true)}
+                    className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 
+                            focus:outline-none focus:ring-blue-300 font-medium rounded-lg 
+                            text-sm px-5 py-2.5 text-center"
+                    type="button"
+                >
+                    + Tambah Siswa
+                </button>
+                <span className="bg-blue-100 text-blue-700 px-4 py-1 rounded-full shadow font-medium">
+                    Total: {siswa.length} siswa
+                </span>
             </div>
 
             {isOpen && (
-            <div
-                className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-50"
-                onClick={() => setIsOpen(false)} 
-            >
+            <div className="fixed inset-0 z-100 flex items-center justify-center bg-[rgba(0,0,0,0.88)]" onClick={() => setIsOpen(false)}>
                 <div
-                className="bg-white  rounded-lg shadow-lg p-6 w-full max-w-lg"
+                className="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg"
                 onClick={(e) => e.stopPropagation()} 
                 >
-                <div className="flex justify-between items-center border-b pb-2 mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    Tambah Siswa
+                <div className="relative border-b pb-2 mb-4">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-black text-center">
+                        Tambah Siswa
                     </h3>
                     <button
-                    onClick={() => setIsOpen(false)}
-                    className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                        onClick={() => setIsOpen(false)}
+                        className="absolute right-0 top-0 text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     >
-                    ✕
+                        ✕
                     </button>
                 </div>
-
                 <TambahSiswa onClose={() => setIsOpen(false)} />
                 </div>
             </div>
@@ -118,6 +113,6 @@
             ))}
             </div>
         </div>
-        </div>
-    );
-    }
+    </div>
+);
+}
