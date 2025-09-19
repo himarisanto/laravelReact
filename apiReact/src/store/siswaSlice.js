@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "/node_modules/.vite/deps/@reduxjs_toolkit.js?v=b926bc1c";
-import axios from "/node_modules/.vite/deps/axios.js?v=b926bc1c";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchSiswa = createAsyncThunk("siswa/fetchSiswa", async () => {
     const res = await axios.get("http://127.0.0.1:8000/api/siswa");

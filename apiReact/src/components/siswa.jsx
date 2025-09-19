@@ -12,7 +12,10 @@ const [isOpen, setIsOpen] = useState(false);
 useEffect(() => {
     dispatch(fetchSiswa());
 }, [dispatch]);
-
+// const handleSiswaAdded = () => {
+//     setIsOpen(false);      
+//     dispatch(fetchSiswa());
+// };
 return (
     <div className="p-6 bg-gray-50 min-h-screen">
         <div className="max-w-7xl mx-auto">

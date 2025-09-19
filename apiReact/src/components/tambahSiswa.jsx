@@ -19,6 +19,12 @@ export default function TambahSiswa() {
         dispatch(createSiswa(formData)).then(() => {
         dispatch(fetchSiswa());
         });
+        // try {
+        //     await dispatch(createSiswa(formData)).unwrap();
+        //     if (onSuccess) onSuccess();
+        // } catch (err) {
+        //     console.error("Gagal tambah siswa:", err);
+        // }
 
         e.target.reset();
         setGambar(null);
